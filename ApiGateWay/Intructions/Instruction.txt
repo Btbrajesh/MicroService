@@ -1,0 +1,144 @@
+﻿Login Api Route and All Api will redirect from one port 
+
+// Login Api
+
+curl --location 'http://localhost:4433/gateway/account' \
+--header 'Content-Type: application/json' \
+--data '{
+    "UserName": "admin",
+    "Password": "admin123"  
+}'
+
+curl --location 'http://localhost:4433/gateway/account' \
+--header 'Content-Type: application/json' \
+--data '{
+    "UserName": "user01",
+    "Password": "user01"  
+}'
+
+Customer Api 
+
+//add customer
+
+curl --location 'http://localhost:4433/gateway/Customer' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjAxIiwiUm9sZSI6IlVzZXIiLCJuYmYiOjE2OTI2MTY0NTQsImV4cCI6MTY5MjYxNzY1NCwiaWF0IjoxNjkyNjE2NDU0fQ.D8X7lWplCDPHdzlqAt_6d4mSz03xKveXb8Rx9zQQ9vw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name": "Krishan Kumar",
+  "contact": "8765433123",
+  "city": "Shikohabad",
+  "email": "Krishan@gmail.com"
+}'
+
+//get customer
+
+curl --location 'http://localhost:4433/gateway/customer' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjAxIiwiUm9sZSI6IlVzZXIiLCJuYmYiOjE2OTI2MTY0NTQsImV4cCI6MTY5MjYxNzY1NCwiaWF0IjoxNjkyNjE2NDU0fQ.D8X7lWplCDPHdzlqAt_6d4mSz03xKveXb8Rx9zQQ9vw'
+
+//update customer
+
+curl --location --request PUT 'http://localhost:4433/gateway/customer/4' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjAxIiwiUm9sZSI6IlVzZXIiLCJuYmYiOjE2OTI2MTY0NTQsImV4cCI6MTY5MjYxNzY1NCwiaWF0IjoxNjkyNjE2NDU0fQ.D8X7lWplCDPHdzlqAt_6d4mSz03xKveXb8Rx9zQQ9vw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id": 4,
+    "name": "Gaurav Yadav",
+  "contact": "8765443123",
+  "city": "Shikohabad",
+  "email": "Gaurav@gmail.com"
+}'
+
+
+// Product API 
+
+//get product 
+
+curl --location 'http://localhost:4433/gateway/product' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTY5MjYxNjkyNCwiZXhwIjoxNjkyNjE4MTI0LCJpYXQiOjE2OTI2MTY5MjR9.Mx4IyH1LdnP--Xfy4xbzXpIyRyNO0bveG7ETOn6vu3k'
+
+//add product
+
+curl --location 'http://localhost:4433/gateway/product' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTY5MjYxNjkyNCwiZXhwIjoxNjkyNjE4MTI0LCJpYXQiOjE2OTI2MTY5MjR9.Mx4IyH1LdnP--Xfy4xbzXpIyRyNO0bveG7ETOn6vu3k' \
+--header 'Content-Type: application/json' \
+--data '{
+  "name": "Mobile VIVO 12",
+  "rate": 50000
+}'
+
+//update product
+
+curl --location --request PUT 'http://localhost:4433/gateway/product/4' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYWRtaW4iLCJSb2xlIjoiQWRtaW5pc3RyYXRvciIsIm5iZiI6MTY5MjYxNjkyNCwiZXhwIjoxNjkyNjE4MTI0LCJpYXQiOjE2OTI2MTY5MjR9.Mx4IyH1LdnP--Xfy4xbzXpIyRyNO0bveG7ETOn6vu3k' \
+--header 'Content-Type: application/json' \
+--data '{
+    "id":4,
+  "name": "Mobile OPPO",
+  "rate": 50000
+}'
+
+
+//Order API 
+
+//get order list 
+
+curl --location 'http://localhost:4433/gateway/order'
+
+//add order api 
+
+curl --location 'http://localhost:4433/gateway/Order' \
+--header 'Content-Type: application/json' \
+--data '{
+  "id": 0,
+  "orderId": 400,
+  "orderOn": "2023-08-18T12:03:20.444Z",
+  "orderDetails": [
+    {
+      "id": 0,
+      "productId": 230,
+      "quantity": 450,
+      "unitPrice": 530
+    }
+  ]
+}'
+
+//update order api 
+
+curl --location --request PUT 'http://localhost:4433/gateway/order/4' \
+--header 'Content-Type: application/json' \
+--data '{
+  "id": 4,
+  "orderId": 400,
+  "orderOn": "2023-08-18T12:03:20.444Z",
+  "orderDetails": [
+    {
+      "id": 4,
+      "productId": 230,
+      "quantity": 450,
+      "unitPrice": 530
+    }
+  ]
+}'
+
+
+// Note : First you need to watch this video for create new microservice project 
+https://youtu.be/k4l3Ptd4yjw
+
+// After that you need to watch this video for authentication and login process
+
+https://youtu.be/P2osfctiHAc
+
+
+Every Microservice project have one file name 
+lounchsetting.json
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:40863",
+      "sslPort": 4435
+    }
+  },
+
+  you need to provide this sslport in your apigateway project you can access all api from APIGateWay sslport
+  you don't need to access all project sslport and run you can access all api form APIGateWay Porject ssl port 
